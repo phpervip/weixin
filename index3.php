@@ -26,6 +26,10 @@ class wechatCallbackapiTest
 
     private function checkSignature()
     {
+        $fp = fopen('log.txt','w+');
+        $strText = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n";
+        fwrite($fp,$strText);
+
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
@@ -44,6 +48,11 @@ class wechatCallbackapiTest
 
     public function responseMsg()
     {
+        $fp = fopen('log.txt','w+');
+        $strText = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n";
+        fwrite($fp,$strText);
+
+
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
         if (!empty($postStr)){
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
@@ -64,6 +73,11 @@ class wechatCallbackapiTest
     
     private function receiveEvent($object)
     {
+
+        $fp = fopen('log.txt','w+');
+        $strText = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n";
+        fwrite($fp,$strText);
+
         $content = "";
         switch ($object->Event)
         {
@@ -80,6 +94,11 @@ class wechatCallbackapiTest
 
     private function transmitText($object, $content)
     {
+        $fp = fopen('log.txt','w+');
+        $strText = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n";
+        fwrite($fp,$strText);
+
+
         $textTpl = "<xml>
 <ToUserName><![CDATA[%s]]></ToUserName>
 <FromUserName><![CDATA[%s]]></FromUserName>
@@ -90,5 +109,6 @@ class wechatCallbackapiTest
         $result = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content);
         return $result;
     }
+
 }
 ?>
