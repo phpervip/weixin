@@ -24,8 +24,12 @@ class wechatCallbackapiTest
         }
     }
 
-    private function checkSignature()
+    private function checkSignature()        
     {
+        $fp = fopen('log.txt','w+');
+        $strText = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n";
+        fwrite($fp,$strText);
+
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
