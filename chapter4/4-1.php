@@ -1,5 +1,6 @@
 <?php
 //$appid = "wxbad0b4x543aa0b5e";
+// 一步登天订阅号
 $appid = "wx54109120842d46d4";
 $appsecret = "a72ffd7a4e4c81c6e45da9218eecdd2e";
 $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";

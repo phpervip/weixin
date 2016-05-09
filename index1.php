@@ -5,6 +5,7 @@
 // 微信公众账号接收到用户的消息类型判断
 //
 
+
 define("TOKEN", "weixin");
 
 $wechatObj = new wechatCallbackapiTest();
@@ -13,6 +14,10 @@ if (!isset($_GET['echostr'])) {
 }else{
     $wechatObj->valid();
 }
+
+
+
+
 
 class wechatCallbackapiTest
 {
@@ -24,6 +29,8 @@ class wechatCallbackapiTest
             exit;
         }
     }
+
+
 
     private function checkSignature()
     {
@@ -43,6 +50,8 @@ class wechatCallbackapiTest
             return false;
         }
     }
+
+
 
     public function responseMsg()
     {
